@@ -49,7 +49,7 @@ jobs:
                 uses: appleboy/ssh-action@v0.1.10
                 with:
                     host: ${{secrets.HOST_SERVER}}
-                    username: ${{secrets.HOST_SERVER_NAME}}
+                    username: ${{secrets.HOST_USER_NAME}}
                     key: ${{secrets.HOST_SSH_PRIVATE_KEY}}
                     port: 22
                     script:
