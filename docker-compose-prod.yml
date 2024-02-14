@@ -3,4 +3,4 @@ services:
   frontend:
     image: ownny/234-deploylab-frontend:latest
     ports:
-    - "9999:8080"
+    - "9999:80"
