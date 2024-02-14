@@ -52,7 +52,7 @@ jobs:
                     username: ${{secrets.HOST_USER_NAME}}
                     key: ${{secrets.HOST_SSH_PRIVATE_KEY}}
                     port: 22
-                    script:
+                    script: |
                         cd /home/ubuntu/frontend
                         echo ${{secrets.DOCKER_HUB_TOKEN}} | docker login --username ${{secrets.DOCKER_HUB_USERNAME}} --password-stdin
                         docker compose down
