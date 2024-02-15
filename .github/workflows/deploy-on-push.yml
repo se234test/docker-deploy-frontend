@@ -3,7 +3,7 @@ name: Deploy frontend application
     push:
         branches:
             - prod
- 
+
 jobs:
     docker:
         runs-on: ubuntu-latest
@@ -26,7 +26,7 @@ jobs:
             -
                 name: prepare the docker-compose run
                 run: |
-                      ls -l
+                      ls -l 
             -
                 name: Build and push
                 uses: docker/build-push-action@v4
@@ -57,6 +57,5 @@ jobs:
                         echo ${{secrets.DOCKER_HUB_TOKEN}} | docker login --username ${{secrets.DOCKER_HUB_USERNAME}} --password-stdin
                         docker compose down
                         docker compose pull
-                        docker compose up -d
-                        docker compose -f docker-compose.yml up -d
+                        docker compose -f docker-compose-prod.yml up -d
                         rm -rf /home/ubuntu/frontend
