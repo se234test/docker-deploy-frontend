@@ -2,7 +2,7 @@ name: Deploy frontend application
 'on':
     push:
         branches:
-            - prod
+            - main
  
 jobs:
     docker:
@@ -42,7 +42,7 @@ jobs:
                     username: ${{secrets.HOST_USER_NAME}}
                     key: ${{secrets.HOST_SSH_PRIVATE_KEY}}
                     port: 22
-                    source: "docker-compose-prod.yml"
+                    source: "docker-compose.yml"
                     target: "/home/ubuntu/frontend"
             -
                 name: docker compose
@@ -57,5 +57,5 @@ jobs:
                         echo ${{secrets.DOCKER_HUB_TOKEN}} | docker login --username ${{secrets.DOCKER_HUB_USERNAME}} --password-stdin
                         docker compose down
                         docker compose pull
-                        docker compose -f docker-compose-prod.yml up -d
+                        docker compose up -d
                         rm -rf /home/ubuntu/frontend
