@@ -58,5 +58,4 @@ jobs:
                         docker compose down
                         docker compose pull
                         docker compose up -d
-                        docker compose -f docker-compose-prod.yml
                         rm -rf /home/ubuntu/frontend
