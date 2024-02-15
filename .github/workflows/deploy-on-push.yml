@@ -42,7 +42,9 @@ jobs:
                     username: ${{secrets.HOST_USER_NAME}}
                     key: ${{secrets.HOST_SSH_PRIVATE_KEY}}
                     port: 22
-                    source: "docker-compose.yml"
+                    source: |
+                        "docker-compose.yml"
+                        "docker-compose-prod.yml"
                     target: "/home/ubuntu/frontend"
             -
                 name: docker compose
@@ -57,6 +59,5 @@ jobs:
                         echo ${{secrets.DOCKER_HUB_TOKEN}} | docker login --username ${{secrets.DOCKER_HUB_USERNAME}} --password-stdin
                         docker compose down
                         docker compose pull
-                        docker compose -f docker-compose.yml up -d
-                        docker compose -f docker-compose-prod.yml up -d
+                        docker compose up -d
                         rm -rf /home/ubuntu/frontend
